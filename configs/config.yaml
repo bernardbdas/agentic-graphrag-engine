@@ -1,0 +1,43 @@
+app:
+  name: "Agentic-GraphRAG-Engine"
+  version: "1.0.0"
+  env: "development"
+  log_level: "INFO"
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+
+neo4j:
+  uri: "bolt://localhost:7687"
+  user: "neo4j"
+  password: "password123"
+  database: "neo4j"
+  max_connection_lifetime: 3600
+  max_connection_pool_size: 50
+
+qdrant:
+  host: "localhost"
+  port: 6333
+  collection_name: "sec_filings_hybrid"
+  vector_size: 1536
+  distance: "Cosine"
+
+redis:
+  url: "redis://localhost:6379/0"
+  ttl_seconds: 3600
+
+model:
+  llm_model: "gpt-4o"
+  temperature: 0.1
+  embedding_model: "text-embedding-3-small"
+  reranker_model: "colbert-ir/colbertv2.0"
+  top_k_vector: 20
+  top_k_graph: 15
+  top_k_rerank: 5
+
+agents:
+  max_reasoning_steps: 6
+  verification_threshold: 0.85
+  timeout_seconds: 45
